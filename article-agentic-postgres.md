@@ -42,9 +42,9 @@ This is the experimental angle: turn `ragvitals` into a set of SQL functions on 
 
 Three new SQL surfaces on top of the standard pgvector / pgai setup:
 
-- `trace_log` — every (retrieval, generation, judge_score) event appended as one jsonb row
-- `drift_report()` — a SQL function that aggregates the last N traces into a row-per-dimension report
-- `commit_window()` — rolls today's metrics into a baseline so tomorrow's `drift_report()` has something to compare against
+- `trace_log`: every (retrieval, generation, judge_score) event appended as one jsonb row
+- `drift_report()`: a SQL function that aggregates the last N traces into a row-per-dimension report
+- `commit_window()`: rolls today's metrics into a baseline so tomorrow's `drift_report()` has something to compare against
 
 The agent calls these via MCP. The whole observability loop is one extension and one set of functions; you do not have to leave Postgres to ask "am I doing OK".
 
