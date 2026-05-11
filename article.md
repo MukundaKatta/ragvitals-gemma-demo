@@ -1,6 +1,6 @@
 ---
 title: "Your RAG works on Claude. Does it work on Gemma 4? Drift detection across model families."
-published: false
+published: true
 description: "A reproducible experiment: swap the generator in a working RAG pipeline from Claude Sonnet 4.5 to Gemma 4 9B, and see which production drift dimensions actually fire. Same retriever, same embedder, same queries. Spoiler: only one of the five should move, and most monitoring setups will alarm on the wrong four."
 tags: gemma, rag, llm, observability
 canonical_url:
