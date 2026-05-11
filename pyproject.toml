@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ragvitals-gemma-demo"
+version = "0.1.0"
+description = "Companion demo for the dev.to Gemma 4 Write-track entry: ragvitals across a Gemma↔Claude model swap."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mukunda Katta", email = "mukunda.vjcs6@gmail.com" }]
+dependencies = []
+
+[project.optional-dependencies]
+core = ["ragvitals>=0.1.0"]
+real = [
+    "ragvitals>=0.1.0",
+    "anthropic>=0.40",
+    "transformers>=4.45",
+    "sentence-transformers>=3.0",
+    "torch>=2.3",
+    "accelerate>=0.30",
+]
+dev = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/MukundaKatta/ragvitals-gemma-demo"
+Article = "https://dev.to/mukundakatta"
+Library = "https://github.com/MukundaKatta/ragvitals"
+
+[tool.hatch.build.targets.wheel]
+packages = ["demo"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"

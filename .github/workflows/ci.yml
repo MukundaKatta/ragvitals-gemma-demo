@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  synthetic:
+    name: synthetic experiment / py${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: install ragvitals from GitHub
+        run: pip install "ragvitals @ git+https://github.com/MukundaKatta/ragvitals@v0.1.0"
+      - name: run synthetic experiment (deterministic)
+        run: python demo/synthetic_run.py
+      - name: run tests
+        run: pip install pytest && pytest -v
